@@ -27,8 +27,8 @@ jobs:
       - name: Copy docker-compose and build folder to EC2
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USERNAME }}
+          host: ${{secrets.EC2_HOST}}
+          username: ${{secrets.EC2_USERNAME}}
           key: ${{ secrets.EC2_SSH_KEY }}
           source: "./docker-compose.yml,./dist"
           target: "~/react-cicd"
@@ -36,9 +36,9 @@ jobs:
       - name: SSH into EC2 and deploy
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.EC2_SSH_KEY }}
+          host: ${{secrets.EC2_HOST}}
+          username: ${{secrets.EC2_USERNAME}}
+          key: ${{secrets.EC2_SSH_KEY}}
           script: |
             cd ~/react-cicd
             docker-compose down
